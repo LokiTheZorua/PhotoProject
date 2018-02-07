@@ -99,6 +99,7 @@ public class Picture extends SimplePicture
     }
   }
   
+  
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
@@ -217,24 +218,44 @@ public class Picture extends SimplePicture
       }
     }
   }
-  public void GlitchedPicture(int startRow, int startCol)
+  
+  public void glitchArt()
   {
-	  Picture beach = new Picture("beach.jpg");
-	  Pixel [] [] originalPixels = beach.getPixels2D();
-	  Pixel [] [] glichedPixels = null;
-	  
-	  int colSize = beach.getWidth();
-	  int rowSize = beach.getHeight();
+	  Pixel [] [] pixels = this.getPixels2D();
+	  int shiftAmount = (int) (.33 * pixels[0].length);
+	  int width = pixels[0].length;
 	  
 	  
 	  
-	  for (int rowIndex = 0; rowIndex < rowSize; rowIndex++)
+	  for (int row = 0; row < pixels.length; row++)
 	  {
-		  for (int colIndex = 0; colIndex < colSize; colIndex ++)
+		  Color [] currentColors = new Color[pixels[0].length];
+		  
+		  for (int col = 0; col < pixels[row].length; col++)
 		  {
-			  
+			  currentColors[col] = pixels[row][col].getColor();
+		  }
+		  
+		  for (int col = 0; col < pixels[0].length; col++)
+		  {
+			  pixels[row][col].setColor(currentColors[(col+ shiftAmount) % width]);
 		  }
 	  }
+	  
+	  int randomSquareStartRow = (int) (Math.random() * (pixels.length - (pixels.length /10)));
+	  int randomSquareStartCol = (int) (Math.random() * (pixels[0].length -(pixels[0].length /10)));
+	  
+	  
+	  for (int row = 0; row < (pixels.length / 10) ; row++)
+	  {
+		  
+		  for (int col = 0; col <(pixels[0].length / 10); col++)
+		  {
+			  pixels [ randomSquareStartRow +row] [randomSquareStartCol + col].setGreen(0);
+		  }
+	  }
+	  
+	  // more that 50 different red and blue will be found by an if statement
   }
   
   
@@ -245,8 +266,10 @@ public class Picture extends SimplePicture
   {
     Picture beach = new Picture("beach.jpg");
     beach.explore();
-    beach.zeroBlue();
+//    beach.zeroBlue();
+    beach.glitchArt();
     beach.explore();
+    
   }
   
 } // this } is the end of class Picture, put all new methods before this
