@@ -217,6 +217,25 @@ public class Picture extends SimplePicture
       }
     }
   }
+  public void GlitchedPicture(int startRow, int startCol)
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  Pixel [] [] originalPixels = beach.getPixels2D();
+	  Pixel [] [] glichedPixels = null;
+	  
+	  int colSize = beach.getWidth();
+	  int rowSize = beach.getHeight();
+	  
+	  
+	  
+	  for (int rowIndex = 0; rowIndex < rowSize; rowIndex++)
+	  {
+		  for (int colIndex = 0; colIndex < colSize; colIndex ++)
+		  {
+			  
+		  }
+	  }
+  }
   
   
   /* Main method for testing - each class in Java can have a main 
