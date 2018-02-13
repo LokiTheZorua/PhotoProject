@@ -242,7 +242,18 @@ public class Picture extends SimplePicture
 		  }
 	  }
 	  
-		 for (int time = 0; time < 2; time++)
+	  int topRedBlueStart = 100;
+	  int leftRedBlueStart = 200;
+	  
+	  for(int row = 0; row < 100; row++)
+	  {
+		  for (int col = 0; col < 100; col ++)
+		  {
+			  
+		  }
+	  }
+	  
+		 for (int time = 0; time < 4; time++)
 		 {
 			 int randomSquareStartRow = (int) (Math.random() * (pixels.length - (pixels.length /10)));
 			 int randomSquareStartCol = (int) (Math.random() * (pixels[0].length - (pixels[0].length /10)));
@@ -256,11 +267,7 @@ public class Picture extends SimplePicture
 					 pixels [ randomSquareStartRow +row] [randomSquareStartCol + col].setGreen(0);
 				 }
 			 }
-	  }
-	  
-	  // more that 50 different red and blue will be found by an if statement
-	  
-	  
+		 }
   }
   
   
